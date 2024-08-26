@@ -1,5 +1,9 @@
-const userProducts =()=>
+const UserProducts =()=>
 {
-
+return (
+    <>
+    Products.
+    </>
+)
 }
-export default userProducts;
+export default UserProducts;

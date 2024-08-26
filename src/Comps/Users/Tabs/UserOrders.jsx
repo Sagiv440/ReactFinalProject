@@ -1,5 +1,9 @@
-const userOrders =()=>
+const UserOrders =()=>
 {
-
+    return (
+        <>
+        Orders.
+        </>
+    )
 }
-export default userOrders;
+export default UserOrders;
