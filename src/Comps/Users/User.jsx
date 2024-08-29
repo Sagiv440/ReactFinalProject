@@ -1,12 +1,14 @@
 
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 import UserAccount from "./Tabs/UserAccount";
 import UserOrders from "./Tabs/UserOrders";
 import UserProducts from "./Tabs/UserProducts";
 
-const UserComp =({user})=>
+const UserComp =()=>
 {
+    const user = useParams();
     const [state, setState] = useState("")
 
     const logout =()=>
