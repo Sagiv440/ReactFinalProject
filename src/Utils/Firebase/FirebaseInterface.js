@@ -6,23 +6,18 @@ import db from "./Firebase";
 export async function LogUser(type, user, password)
 {
     const admin = collection(db, type);
-    const q = query(admin, where("user" , "==", user) , where("password", "==", password))
+    const q = query(admin, where("username" , "==", user) , where("password", "==", password))
     const adminRef = await getDocs(q);
     const adminData = adminRef.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
       }));
-    if(adminData.length > 0)
-    {
-        return true;
-    }
-    return false;
-
+    return adminData[0];
 }
-export async function isUser(type, user)
+export async function isDocument(value, type, coll)
 {
-    const admin = collection(db, USERS_COLLECTION);
-    const q = query(admin, where(type , "==", user))
+    const admin = collection(db, coll);
+    const q = query(admin, where(type , "==", value))
     const adminRef = await getDocs(q);
     const adminData = adminRef.docs.map(doc => ({
         id: doc.id,
@@ -35,12 +30,9 @@ export async function isUser(type, user)
     return false;
 }
 
-export async function addUser(user, password)
+export async function addDocument(document, coll)
 {
-    const userCollection = collection(db, USERS_COLLECTION);
-    await addDoc(userCollection, {
-        user: user,
-        password: password
-      });
+    const userCollection = collection(db, coll);
+    await addDoc(userCollection, { ...document });
 }
 

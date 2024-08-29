@@ -6,25 +6,31 @@ import { ADMIN_COLLECTION, USERS_COLLECTION } from "../../Utils/constants"
 
 const LogPage = ()=>
 {
-    const [name, setName] = useState("")
+    const [username, setUsername] = useState("")
     const [password, setPassword] = useState("");
 
     const loginFunc = async ()=>
     {
-        if( await LogUser(ADMIN_COLLECTION, name, password) == true)
+        let admin = await LogUser(ADMIN_COLLECTION, username, password)
+        if( admin != null)
             {
-                window.location.href = `User/${capitalizeFirstLetter(name)}`
+                window.location.href = `User/${capitalizeFirstLetter(username)}`
             }
-        else if( await LogUser(USERS_COLLECTION, name, password) == true)
+        else 
+        admin = await LogUser(USERS_COLLECTION, username, password)
+        if(admin != null)
             {
-                window.location.href = `User/${capitalizeFirstLetter(name)}`
+                window.location.href = `User/${capitalizeFirstLetter(username)}`
             }
+        else{
+            console.log("Wrong Username Or Password!")
+        }
     }
 
     return (
         <>
         <div>
-            User Name:<input type="text" onChange={(e)=> setName(e.target.value)}></input><br/>
+            Username:<input type="text" onChange={(e)=> setUsername(e.target.value)}></input><br/>
             Password: <input type="password" onChange={(e)=> setPassword(e.target.value)}></input><br/>
             <button onClick={()=> loginFunc()}>Login</button><br/><br/>
             New User? <a href="Registration">Register</a>
