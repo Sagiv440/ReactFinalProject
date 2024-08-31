@@ -5,16 +5,15 @@ const REDUCER_STATE =
     curUser: {},
 }
 
-const ecomsReducer = (state = REDUCER_STATE, action) =>
+const storeReducer = (state = REDUCER_STATE, action) =>
 {
     switch(action.type)
     {
         case INIT_USER:
-            console.log(action);
             return { ...state, curUser: { ...action.payload }};
 
         default:
             return { ...state };
     }
 }
-export default ecomsReducer;
+export default storeReducer;

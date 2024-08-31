@@ -4,11 +4,11 @@ import { BrowserRouter } from 'react-router-dom'
 
 import { legacy_createStore as createStore } from 'redux';
 import { Provider } from 'react-redux';
-import ecomsReducer from './Utils/Redux/rootReducer.js';
+import storeReducer from './Utils/Redux/rootReducer.js';
 
 import App from './App.jsx'
 
-const store = createStore(ecomsReducer);
+const store = createStore(storeReducer);
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>

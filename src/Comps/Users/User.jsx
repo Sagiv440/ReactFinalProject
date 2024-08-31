@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import UserAccount from "./Tabs/UserAccount";
@@ -12,6 +12,7 @@ const UserComp =()=>
     //const user = useParams();
     const user = useSelector((select)=>select.curUser);
     const [state, setState] = useState("");
+    const navigate = useNavigate();
 
     const logout =()=>
     {
@@ -22,10 +23,13 @@ const UserComp =()=>
         e.preventDefault();
         setState(value);
     }
-    useEffect(()=>
-    {
-        console.log(user);
+
+    useEffect(()=>{
+        if(Object.entries(user).length === 0){
+            navigate(`/`);
+        }
     },[])
+
     return (
         <>
         
