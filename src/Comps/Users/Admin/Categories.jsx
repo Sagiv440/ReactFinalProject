@@ -49,9 +49,9 @@ const Categories =()=>
         {categoriess.map((cat)=>
             {
                 return (
-                <>
-                <Category key={cat.id} name={cat} remove={removeCategory} update={UpdateCategory}/><br/>
-                </>
+                <div key={cat.id}>
+                <Category name={cat} remove={removeCategory} update={UpdateCategory}/><br/>
+                </div>
             )
             }
         )}

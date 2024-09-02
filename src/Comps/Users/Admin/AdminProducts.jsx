@@ -36,9 +36,9 @@ const AdminProducts =()=>
             {products.map((pro)=>
                 {
                     return (
-                    <>
-                    <Product key={pro.id} prod={pro} save={UpdateProduct}/> <br/>
-                    </>
+                    <div key={pro.id}>
+                    <Product prod={pro} save={UpdateProduct}/> <br/>
+                    </div>
                 )
                 }
             )}
