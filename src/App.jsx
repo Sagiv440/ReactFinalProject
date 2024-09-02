@@ -13,7 +13,7 @@ function App() {
     <Routes>
       <Route path="/" element={<LogPage/>}></Route>
       <Route path="/Registration" element={<RegistrationPage/>}></Route>
-      <Route path="/User/:name" element={<UserComp/>}></Route>
+      <Route path="/:type/:name" element={<UserComp/>}></Route>
      
     </Routes>
     </>

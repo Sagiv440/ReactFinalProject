@@ -21,17 +21,18 @@ const LogPage = ()=>
         if( admin != null)
             {
                 dispatch({type: INIT_USER, payload: { ...admin }});
-                navigate(`User/${username}`);
+                navigate(`Admin/${username}`);
             }
-        else 
-        admin = await LogUser(USERS_COLLECTION, username, password)
-        if(admin != null)
-            {
-                dispatch({type: INIT_USER, payload: { ...admin }});
-                navigate(`User/${username}`);
+        else {
+            admin = await LogUser(USERS_COLLECTION, username, password)
+            if(admin != null)
+                {
+                    dispatch({type: INIT_USER, payload: { ...admin }});
+                    navigate(`User/${username}`);
+                }
+            else{
+                console.log("Wrong Username Or Password!")
             }
-        else{
-            console.log("Wrong Username Or Password!")
         }
     }
 

@@ -1,4 +1,4 @@
-import {  collection, query, where, getDocs, addDoc } from "firebase/firestore";
+import {  collection, query, where, getDocs, addDoc, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { ADMIN_COLLECTION, USERS_COLLECTION } from "../../Utils/constants"
 
 import db from "./Firebase";
@@ -14,6 +14,8 @@ export async function LogUser(type, user, password)
       }));
     return adminData[0];
 }
+
+//return true if document exsist
 export async function isDocument(value, type, coll)
 {
     const admin = collection(db, coll);
@@ -30,9 +32,50 @@ export async function isDocument(value, type, coll)
     return false;
 }
 
+//Add a new document to the database
 export async function addDocument(document, coll)
 {
+    try {
+        const userCollection = collection(db, coll);
+        await addDoc(userCollection, { ...document });
+        console.log("Document successfully Added!");
+    } catch (error) {
+        console.error("Error Adding document: ", error);
+    }
+}
+
+export async function deleteDocument(collectionName, documentId)
+{
+    try {
+        const docRef = doc(db, collectionName, documentId);
+        await deleteDoc(docRef);
+        console.log("Document successfully deleted!");
+    } catch (error) {
+        console.error("Error removing document: ", error);
+    }
+  };
+
+  export async function updateDocument(collectionName, documentId, updatedData)
+  {
+    try {
+        const docRef = doc(db, collectionName, documentId);
+        await updateDoc(docRef, updatedData);
+        console.log("Document successfully updated!");
+    } catch (error) {
+        console.error("Error updating document: ", error);
+    }
+  };
+
+export async function getCollection(coll)
+{
     const userCollection = collection(db, coll);
-    await addDoc(userCollection, { ...document });
+    const adminRef = await getDocs(userCollection);
+    const adminData = adminRef.docs.map(doc => (
+        {
+            id: doc.id,
+            ...doc.data()
+        }
+    ));
+    return ([...adminData]);
 }
 

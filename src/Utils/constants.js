@@ -14,10 +14,28 @@ export const USER_TEMPLATE =
 
     Orders: []
 }
+export const ORDER_TEMPLATE =
+{
+    productId: "",
+    amount: 0,
+}
+
+
+export const PRODUCT_TEMPLATE =
+{
+    //Credential
+    title: "",
+    category: "",
+    price: 0,
+
+    description: "",
+    imageLink: "",
+}
 
 //Firebase collection names
 export const USERS_COLLECTION = "Users";
 export const ADMIN_COLLECTION = "Admin";
+export const CATEGORY_COLLECTION = "Categories";
 
 
 //Redux reducer defult state;
@@ -28,3 +46,4 @@ export const REDUCER_STATE =
 //Redux Actions;
 
 export const INIT_USER = 'INIT_USER';
+export const LOAD_CATEGORIES = 'LOAD_CATEGORIES'
