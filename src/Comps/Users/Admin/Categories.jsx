@@ -40,10 +40,6 @@ const Categories =()=>
             updateDocument(CATEGORY_COLLECTION, cat.id, {name: newCat});
             getCat();
         }
-    
-    useEffect(()=>{
-        getCat();
-    },[])
 
 
     return (

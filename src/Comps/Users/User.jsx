@@ -11,10 +11,13 @@ import Categories from "./Admin/Categories";
 import Customers from "./Admin/Customers";
 import AdminProducts from "./Admin/AdminProducts";
 import Statistics from "./Admin/Statistics";
+import { CATEGORY_COLLECTION, LOAD_CATEGORIES, LOAD_PRODUCTS, PRODUCT_COLLECTION } from "../../Utils/constants";
+import { getCollection } from "../../Utils/Firebase/FirebaseInterface";
 
 const UserComp =()=>
 {
     const type = useParams();
+    const dispatch = useDispatch();
     const user = useSelector((select)=>select.curUser);
     const [state, setState] = useState("");
     const navigate = useNavigate();
@@ -30,8 +33,19 @@ const UserComp =()=>
     }
 
     useEffect(()=>{
+
+        const getAll = async()=>{
+            let coll = await getCollection(CATEGORY_COLLECTION);
+            dispatch({type: LOAD_CATEGORIES, payload: coll})
+
+            let prod = await getCollection(PRODUCT_COLLECTION);
+            dispatch({type: LOAD_PRODUCTS, payload: prod})
+        }
+
         if(Object.entries(user).length === 0){
             navigate(`/`);
+        }else{
+            getAll()
         }
     },[])
 
