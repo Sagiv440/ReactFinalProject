@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { TABLE_TEMP, LINE_TEMP, CELL_TEMP } from "../../../Utils/Table/TableConst";
-import { USERS_COLLECTION } from "../../../Utils/constants";
 import SmartTable from "../../../Utils/Table/SmartTable";
-import { getCollection } from "../../../Utils/Firebase/FirebaseInterface";
 import { useSelector } from "react-redux";
 
 const Customers =()=>

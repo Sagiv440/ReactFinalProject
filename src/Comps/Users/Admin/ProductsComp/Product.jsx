@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux"
 import { PRODUCT_TEMPLATE } from "../../../../Utils/constants";
+import SmartTable from "../../../../Utils/Table/SmartTable";
+import { TABLE_TEMP, LINE_TEMP, CELL_TEMP } from "../../../../Utils/Table/TableConst";
 
 
 const Product =({prod, save, remove})=>
@@ -13,9 +15,36 @@ const Product =({prod, save, remove})=>
         description: prod.description,
         imageLink: prod.imageLink,
     })
-
-
+    const [table, setTable] = useState(TABLE_TEMP);
     const categories = useSelector((e)=>e.categories);
+    const users = useSelector((e)=>e.users_admin);
+
+    const getProducts =()=>
+        {
+            const titles = { ...LINE_TEMP, cell: [
+                { ...CELL_TEMP, content: "Product"},
+                { ...CELL_TEMP, content: "Qty"},
+                { ...CELL_TEMP, content: "Date"},
+            ]}
+            let userDisplay = [];
+            for(let i = 0; i < users.length; i++)
+            {
+                const order = users[i].orders.find((obj) => obj.productId === prod.id);
+                if(order != null){
+                    userDisplay = [...userDisplay, { ...LINE_TEMP, cell: [
+                        { ...CELL_TEMP, content: `${users[i].name.first}`},
+                        { ...CELL_TEMP, content: `${order.amount}`},
+                        { ...CELL_TEMP, content: `${order.date}`},
+                    ]}]
+                }
+            }
+            return{ ...TABLE_TEMP, lines: [titles, ...userDisplay]}
+        }
+    useEffect(()=>{
+        let tb = getProducts();
+        setTable(tb);
+    },[])
+
     return (
     <>
     Title: <input type="text" onChange={(e)=>setNProduct({ ...nProduct, title: e.target.value})} defaultValue={prod.title}/><br/>
@@ -31,6 +60,7 @@ const Product =({prod, save, remove})=>
     Discription: <input type="text" onChange={(e)=>setNProduct({ ...nProduct, description: e.target.value})} defaultValue={prod.description}/><br/>
     Price: <input type="number" onChange={(e)=>setNProduct({ ...nProduct, price: e.target.value})} defaultValue={prod.price}/><br/>
     Link to pic: <input type="text" onChange={(e)=>setNProduct({ ...nProduct, imageLink: e.target.value})} defaultValue={prod.imageLink}/><br/>
+    <SmartTable table={table}/>
     <button onClick={()=>save(prod.id, nProduct)}>Save</button><br/>
     </>
     )
