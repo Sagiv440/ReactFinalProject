@@ -20,6 +20,7 @@ const storeReducer = (state = REDUCER_STATE, action) =>
 
         case LOAD_PRODUCTS:
             return { ...state, products: [ ...action.payload ]};
+
     
 
         default:

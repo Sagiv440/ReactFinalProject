@@ -12,12 +12,13 @@ export const USER_TEMPLATE =
     //Promissions
     viewOrders: false,
 
-    Orders: []
+    orders: []
 }
 export const ORDER_TEMPLATE =
 {
     productId: "",
     amount: 0,
+    date: ""
 }
 
 
