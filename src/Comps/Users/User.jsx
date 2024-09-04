@@ -11,7 +11,7 @@ import Categories from "./Admin/Categories";
 import Customers from "./Admin/Customers";
 import AdminProducts from "./Admin/AdminProducts";
 import Statistics from "./Admin/Statistics";
-import { CATEGORY_COLLECTION, LOAD_CATEGORIES, LOAD_PRODUCTS, PRODUCT_COLLECTION } from "../../Utils/constants";
+import { CATEGORY_COLLECTION, LOAD_CATEGORIES, LOAD_PRODUCTS, LOAD_USERS, PRODUCT_COLLECTION, USERS_COLLECTION } from "../../Utils/constants";
 import { getCollection } from "../../Utils/Firebase/FirebaseInterface";
 
 const UserComp =()=>
@@ -40,6 +40,12 @@ const UserComp =()=>
 
             let prod = await getCollection(PRODUCT_COLLECTION);
             dispatch({type: LOAD_PRODUCTS, payload: prod})
+
+            if(type.type == "Admin")
+            {
+                let a_users = await getCollection(USERS_COLLECTION);
+                dispatch({type: LOAD_USERS, payload: a_users})
+            }
         }
 
         if(Object.entries(user).length === 0){

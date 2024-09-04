@@ -50,3 +50,4 @@ export const REDUCER_STATE =
 export const INIT_USER = 'INIT_USER';
 export const LOAD_CATEGORIES = 'LOAD_CATEGORIES';
 export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
+export const LOAD_USERS = 'LOAD_USERS';

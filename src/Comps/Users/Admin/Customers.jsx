@@ -9,6 +9,7 @@ const Customers =()=>
     {
         const [custTable, setCustTable] = useState(TABLE_TEMP);
         const products = useSelector((e)=> e.products)
+        const users = useSelector((e)=>e.users_admin)
         const getProducts =(user)=>
         {
             const titles = { ...LINE_TEMP, cell: [
@@ -17,13 +18,13 @@ const Customers =()=>
                 { ...CELL_TEMP, content: "Date"},
             ]}
             let userDisplay = [];
-            for(let i = 0; i < user.Orders.length; i++)
+            for(let i = 0; i < user.orders.length; i++)
             {
-                const product = products.find((obj) => obj.id === user.Orders[i].productId);
+                const product = products.find((obj) => obj.id === user.orders[i].productId);
                 userDisplay = [...userDisplay, { ...LINE_TEMP, cell: [
                     { ...CELL_TEMP, content: `${product.title}`},
-                    { ...CELL_TEMP, content: `${user.Orders[i].amount}`},
-                    { ...CELL_TEMP, content: `${user.Orders[i].date}`},
+                    { ...CELL_TEMP, content: `${user.orders[i].amount}`},
+                    { ...CELL_TEMP, content: `${user.orders[i].date}`},
                 ]}]
             }
             return{ ...TABLE_TEMP, lines: [titles, ...userDisplay]}
@@ -33,7 +34,7 @@ const Customers =()=>
         {
             const getUsers = async () =>
             {
-                const users = await getCollection(USERS_COLLECTION);
+                //const users = await getCollection(USERS_COLLECTION);
                 const titles = { ...LINE_TEMP, cell: [
                     { ...CELL_TEMP, content: "Full Name"},
                     { ...CELL_TEMP, content: "Joined At"},
@@ -53,7 +54,7 @@ const Customers =()=>
             }
             getUsers();
 
-        },[])
+        },[users])
 
         return (
             <>
