@@ -5,7 +5,14 @@ import { PRODUCT_TEMPLATE } from "../../../../Utils/constants";
 
 const Product =({prod, save, remove})=>
 {
-    const [nProduct, setNProduct] = useState(PRODUCT_TEMPLATE)
+    const [nProduct, setNProduct] = useState({...PRODUCT_TEMPLATE, 
+        title: prod.title,
+        category: prod.category,
+        price: prod.price,
+    
+        description: prod.description,
+        imageLink: prod.imageLink,
+    })
 
 
     const categories = useSelector((e)=>e.categories);
