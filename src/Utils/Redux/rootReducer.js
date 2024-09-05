@@ -1,4 +1,4 @@
-import { INIT_USER, LOAD_PRODUCTS, LOAD_USERS } from "../constants"
+import { CLEAR_DATABASE, INIT_USER, LOAD_PRODUCTS, LOAD_USERS } from "../constants"
 import { CATEGORY_COLLECTION, LOAD_CATEGORIES } from "../constants";
 const REDUCER_STATE = 
 {
@@ -25,6 +25,9 @@ const storeReducer = (state = REDUCER_STATE, action) =>
 
         case LOAD_USERS:
             return { ...state, users_admin: [ ...action.payload ]};
+        
+        case CLEAR_DATABASE:
+            return { ...REDUCER_STATE };
 
         default:
             return { ...state };

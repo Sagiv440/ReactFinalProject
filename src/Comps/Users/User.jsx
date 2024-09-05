@@ -24,7 +24,8 @@ const UserComp =()=>
 
     const logout =()=>
     {
-        window.location.href = "/"
+        dispatch({type: CLEAR_DATABASE, payload: coll})
+        navigate(`/`);
     }
     const changeValue =(e, value)=>
     {
@@ -63,7 +64,7 @@ const UserComp =()=>
         <a href="" onClick={(e)=>changeValue(e,"Products")}> Products </a>
         <a href="" onClick={(e)=>changeValue(e,"Orders")}> My Orders </a>
         <a href="" onClick={(e)=>changeValue(e,"Account")}> My Account </a>
-        <a href="/"> Log Out </a>
+        <a href="" onClick={()=>logout()}> Log Out </a>
         </div>}
 
         {type.type == "Admin" && <div>
@@ -71,7 +72,7 @@ const UserComp =()=>
         <a href="" onClick={(e)=>changeValue(e,"AdminProducts")}> Products </a>
         <a href="" onClick={(e)=>changeValue(e,"Customers")}> Customers </a>
         <a href="" onClick={(e)=>changeValue(e,"Statistics")}> Statistics </a>
-        <a href="/"> Log Out </a>
+        <a href="" onClick={()=>logout()}> Log Out </a>
         </div>}
         <br/><br/>
 
