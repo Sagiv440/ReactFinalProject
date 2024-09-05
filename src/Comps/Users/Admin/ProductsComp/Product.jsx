@@ -43,7 +43,7 @@ const Product =({prod, save, remove})=>
     useEffect(()=>{
         let tb = getProducts();
         setTable(tb);
-    },[])
+    },[users, categories])
 
     return (
     <>
