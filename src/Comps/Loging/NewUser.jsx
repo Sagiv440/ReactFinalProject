@@ -1,7 +1,10 @@
+import { Button, Checkbox, FormControlLabel, FormGroup, TextField } from "@mui/material";
 import { isDocument, addDocument } from "../../Utils/Firebase/FirebaseInterface";
 import { USER_TEMPLATE, USERS_COLLECTION } from "../../Utils/constants";
 import { getDate } from "../../Utils/utils"; 
 import { useState } from "react";
+
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const RegistrationPage = ()=>
     {
@@ -33,13 +36,18 @@ const RegistrationPage = ()=>
         
         return (
             <>
-            <div>
-                First Name:<br/><input type="text" onChange={(e)=> setName({ ...name, first: e.target.value})}></input><br/>
-                Last Name:<br/><input type="text" onChange={(e)=> setName({ ...name, last: e.target.value})}></input><br/>
-                User Name:<br/><input type="text" onChange={(e)=> setUsername(e.target.value)}></input><br/>
-                Password: <br/><input type="password" onChange={(e)=> setPassword(e.target.value)}></input><br/>
-                <input type="checkbox" onChange={(e)=>setViewOrders(e.target.checked)}></input> Allow other to see my orders<br/>
-                <button onClick={()=>addNewUser()}>Create</button>
+            <div class="centerScreen">
+                <div class="card">
+                    <h1> Create New User</h1>
+                <br/><TextField id="filled-basic" label="First Name" variant="filled" type="text" onChange={(e)=> setName({ ...name, first: e.target.value})}></TextField><br/>
+                <br/><TextField id="filled-basic" label="Last Name" variant="filled" type="text" onChange={(e)=> setName({ ...name, last: e.target.value})}></TextField><br/>
+                <br/><TextField id="filled-basic" label="Username" variant="filled" type="text" onChange={(e)=> setUsername(e.target.value)}></TextField><br/>
+                <br/><TextField id="filled-basic" label="Password" variant="filled" type="password" onChange={(e)=> setPassword(e.target.value)}></TextField><br/><br/>
+                <FormGroup>
+                <FormControlLabel control={<Checkbox defaultChecked />} label="Allow other to see my orders" onChange={(e)=>setViewOrders(e.target.checked)}/>
+                </FormGroup>
+                <Button variant="contained" onClick={()=>addNewUser()}>Create</Button>
+                </div>
             </div>
             </>
         )

@@ -41,9 +41,9 @@ const UserOrders =()=>
             
 
     return (
-        <>
+        <div class="card">
         <SmartTable table={custTable}/>
-        </>
+        </div>
     )
 }
 export default UserOrders;

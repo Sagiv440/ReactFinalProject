@@ -11,8 +11,9 @@ import Categories from "./Admin/Categories";
 import Customers from "./Admin/Customers";
 import AdminProducts from "./Admin/AdminProducts";
 import Statistics from "./Admin/Statistics";
-import { CATEGORY_COLLECTION, LOAD_CATEGORIES, LOAD_PRODUCTS, LOAD_USERS, PRODUCT_COLLECTION, USERS_COLLECTION } from "../../Utils/constants";
+import { CATEGORY_COLLECTION, CLEAR_DATABASE, LOAD_CATEGORIES, LOAD_PRODUCTS, LOAD_USERS, PRODUCT_COLLECTION, USERS_COLLECTION } from "../../Utils/constants";
 import { getCollection } from "../../Utils/Firebase/FirebaseInterface";
+import { Button } from "@mui/material";
 
 const UserComp =()=>
 {
@@ -24,7 +25,7 @@ const UserComp =()=>
 
     const logout =()=>
     {
-        dispatch({type: CLEAR_DATABASE, payload: coll})
+        dispatch({type: CLEAR_DATABASE})
         navigate(`/`);
     }
     const changeValue =(e, value)=>
@@ -58,21 +59,21 @@ const UserComp =()=>
 
     return (
         <>
-        
+        <div class="centerTopScreen">
         <h1>Hello, {user.username}</h1>
-        {type.type == "User" && <div>
-        <a href="" onClick={(e)=>changeValue(e,"Products")}> Products </a>
-        <a href="" onClick={(e)=>changeValue(e,"Orders")}> My Orders </a>
-        <a href="" onClick={(e)=>changeValue(e,"Account")}> My Account </a>
-        <a href="" onClick={()=>logout()}> Log Out </a>
+        {type.type == "User" && <div class="flex-container">
+        <Button onClick={(e)=>changeValue(e,"Products")}> Products </Button>
+        <Button onClick={(e)=>changeValue(e,"Orders")}> My Orders </Button>
+        <Button onClick={(e)=>changeValue(e,"Account")}> My Account </Button>
+        <Button onClick={()=>logout()}> Log Out </Button>
         </div>}
 
-        {type.type == "Admin" && <div>
-        <a href="" onClick={(e)=>changeValue(e,"Categories")}> Categories </a>
-        <a href="" onClick={(e)=>changeValue(e,"AdminProducts")}> Products </a>
-        <a href="" onClick={(e)=>changeValue(e,"Customers")}> Customers </a>
-        <a href="" onClick={(e)=>changeValue(e,"Statistics")}> Statistics </a>
-        <a href="" onClick={()=>logout()}> Log Out </a>
+        {type.type == "Admin" && <div class="flex-container">
+        <Button onClick={(e)=>changeValue(e,"Categories")}> Categories </Button>
+        <Button onClick={(e)=>changeValue(e,"AdminProducts")}> Products </Button>
+        <Button onClick={(e)=>changeValue(e,"Customers")}> Customers </Button>
+        <Button onClick={(e)=>changeValue(e,"Statistics")}> Statistics </Button>
+        <Button onClick={()=>logout()}> Log Out </Button>
         </div>}
         <br/><br/>
 
@@ -84,6 +85,7 @@ const UserComp =()=>
         {state == "AdminProducts" && <AdminProducts/>}
         {state == "Customers" && <Customers/>}
         {state == "Statistics" && <Statistics/>}
+        </div>
         </>
     )
 }

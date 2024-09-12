@@ -46,7 +46,8 @@ const Product =({prod, save, remove})=>
     },[users, categories])
 
     return (
-    <>
+    <div style={{display:'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+    <div class="left">
     Title: <input type="text" onChange={(e)=>setNProduct({ ...nProduct, title: e.target.value})} defaultValue={prod.title}/><br/>
     Category:<select onChange={(e)=>setNProduct({ ...nProduct, category: e.target.value})}>
                 {
@@ -58,11 +59,14 @@ const Product =({prod, save, remove})=>
                 }
             </select><br/>
     Discription: <input type="text" onChange={(e)=>setNProduct({ ...nProduct, description: e.target.value})} defaultValue={prod.description}/><br/>
+    </div>
+    <div class="left">
     Price: <input type="number" onChange={(e)=>setNProduct({ ...nProduct, price: e.target.value})} defaultValue={prod.price}/><br/>
     Link to pic: <input type="text" onChange={(e)=>setNProduct({ ...nProduct, imageLink: e.target.value})} defaultValue={prod.imageLink}/><br/>
     <SmartTable table={table}/>
     <button onClick={()=>save(prod.id, nProduct)}>Save</button><br/>
-    </>
+    </div>
+    </div>
     )
 }
 export default Product

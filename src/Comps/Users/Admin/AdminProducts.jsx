@@ -32,12 +32,12 @@ const AdminProducts =()=>
         return (
             <>
             <h2>Products </h2><br/>
-            <div>
+            <div style={{position: "flex"}}>
             {products.map((pro)=>
                 {
                     return (
-                    <div key={pro.id}>
-                    <Product prod={pro} save={UpdateProduct}/> <br/>
+                    <div key={pro.id} class="card">
+                    <Product prod={pro} save={UpdateProduct}/>
                     </div>
                 )
                 }
