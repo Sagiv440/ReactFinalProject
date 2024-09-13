@@ -1,0 +1,63 @@
+/* Main container with two side-by-side containers */
+.main-container {
+    display: flex;            /* Enables flex layout */
+    width: 100%;
+  }
+  
+  /* Left container styling */
+  .left-container {
+    flex: 1;                  /* Take 1 part of the available space */
+    background-color: #f0f0f0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .left-container ul {
+    list-style-type: none;    /* Remove bullets */
+    padding: 0;
+    margin: 0;
+  }
+  
+  .left-container li {
+    padding: 10px 0;
+    text-align: center;
+    font-size: 1.2em;
+  }
+  
+  /* Right container styling */
+  .right-container {
+    flex: 2;                  /* Take 2 parts of the available space */
+    display: flex;
+    flex-direction: column;   /* Vertical stacking (header, then list) */
+    background-color: #e0e0e0;
+    padding: 10px;
+  }
+  
+  .header {
+
+    text-align: center;
+  }
+  
+  /* Content list styling (stretches vertically) */
+  .content-list {
+    flex: 1;                  /* Take up remaining vertical space */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;  /* Distribute items evenly */
+  }
+  
+  .content-list li {
+    padding: 15px;
+    background-color: #ffffff;
+    margin: 5px 0;
+    text-align: center;
+    font-size: 1.2em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  

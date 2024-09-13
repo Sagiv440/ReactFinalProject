@@ -1,25 +1,34 @@
+import SearchTap from "./StoreComps/SearchTap";
+import ProductPage from "./StoreComps/ProductPage";
+import UserCart from "./StoreComps/UserCart";
+
 const UserProducts =()=>
 {
 return (
-    <div>
-        <div class="storeSerchBar">
-            <div class="card">
-                1
-            </div>    
-            <div class="card">
-                2
-            </div>    
-            <div class="card">
-                3
-            </div>    
+
+    <>
+    <div class="main-container">
+
+        <div class="left-container">
+            <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+            <li>Item 5</li>
+            <input type="range"></input>
+            </ul>
         </div>
-        <div>
-            Serach bar
-        </div>          
-        <div>
-            Store Page
-        </div>    
+        <div class="right-container">
+            <div class="header">
+            <SearchTap/>
+            </div>
+            <ProductPage/>
+        </div>
     </div>
+    </>
+
+    
 )
 }
 export default UserProducts;
