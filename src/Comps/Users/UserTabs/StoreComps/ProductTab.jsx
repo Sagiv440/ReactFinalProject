@@ -1,12 +1,24 @@
 import { Box, Button } from "@mui/material";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { ADD_ORDER } from "../../../../Utils/constants";
+import { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { UPDATE_ORDER } from "../../../../Utils/constants";
 
 const ProductTab =({product})=>
 {
     const [amount, setAmount] = useState(0);
+    const cart = useSelector((e)=>e.cart);
     const dispatch = useDispatch();
+
+    useEffect(()=>
+    {
+        let order = cart.find((e)=>e.productId === product.id)
+        if(order !== undefined)
+        {
+            setAmount(order.amount);
+        }else{
+            setAmount(0);
+        }
+    },[cart])
 
     const amountInk =(e)=>
     {
@@ -16,7 +28,8 @@ const ProductTab =({product})=>
             value = amount;
         }
         setAmount(value);
-        dispatch({type: ADD_ORDER, payload: {prod: product, amount: value}})
+        dispatch({type: UPDATE_ORDER, payload: {prod: product, amount: value}})
+
     }
 
     return(
