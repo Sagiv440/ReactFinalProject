@@ -5,6 +5,7 @@ const REDUCER_STATE =
     curUser: {},
     categories: [],
     products: [],
+    maxPrice: 0,
 
     //Admin_Access_Only
     users_admin: [],
@@ -21,7 +22,12 @@ const storeReducer = (state = REDUCER_STATE, action) =>
             return { ...state, categories: [ ...action.payload ]};
 
         case LOAD_PRODUCTS:
-            return { ...state, products: [ ...action.payload ]};
+            let plist = [];
+            plist = action.payload.map((prod)=>
+            {
+                return(parseInt(prod.price,10))
+            })
+            return { ...state, products: [ ...action.payload ], maxPrice: Math.max.apply(null,plist)};
 
         case LOAD_USERS:
             return { ...state, users_admin: [ ...action.payload ]};

@@ -2,14 +2,13 @@ import { useSelector } from "react-redux";
 import ProductTab from "./ProductTab";
 
 
-const ProductPage =()=>
+const ProductPage =({products})=>
 {
-    const products = useSelector((select)=> select.products)
     return(
         <>
             {products.map((prod)=>{
                 return(
-                    <ProductTab product={prod}/>
+                    <div key={prod.id}><ProductTab product={prod}/></div>
                 )
             })}
         </>

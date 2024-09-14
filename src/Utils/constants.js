@@ -33,6 +33,13 @@ export const PRODUCT_TEMPLATE =
     imageLink: "",
 }
 
+export const SEARCH_TEMP = 
+{
+    title: "",
+    category: "",
+    price: 0,
+}
+
 //Firebase collection names
 export const USERS_COLLECTION = "Users";
 export const ADMIN_COLLECTION = "Admin";
