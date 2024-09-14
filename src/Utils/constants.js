@@ -59,3 +59,6 @@ export const LOAD_CATEGORIES = 'LOAD_CATEGORIES';
 export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
 export const LOAD_USERS = 'LOAD_USERS';
 export const CLEAR_DATABASE = 'CLEAR_DATABASE';
+export const ADD_ORDER = 'ADD_ORDER';
+export const REMOVE_ORDER = 'REMOVE_ORDER';
+export const PURCHES = 'PURCHES';

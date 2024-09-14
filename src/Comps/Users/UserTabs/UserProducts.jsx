@@ -5,6 +5,11 @@ import { useSelector } from "react-redux";
 import { useMemo, useState } from "react";
 import { SEARCH_TEMP } from "../../../Utils/constants";
 
+const tabStyle = {
+    display: "flex",
+    justifyContent: "center",
+  }
+
 const UserProducts =()=>
 {
     const products = useSelector((select)=> select.products)
@@ -21,19 +26,11 @@ const UserProducts =()=>
 
 
 return (
-    
-    <>
-    <div class="main-container">
+
+    <div style={tabStyle}>
 
         <div class="left-container">
-            <ul>
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
-            <li>Item 5</li>
-            <input type="range"></input>
-            </ul>
+            <UserCart/>
         </div>
         <div class="right-container">
             <div class="header">
@@ -42,7 +39,6 @@ return (
             <ProductPage products={serchedProd}/>
         </div>
     </div>
-    </>
 
     
 )

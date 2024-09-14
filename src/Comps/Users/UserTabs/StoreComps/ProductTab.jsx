@@ -1,9 +1,12 @@
 import { Box, Button } from "@mui/material";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { ADD_ORDER } from "../../../../Utils/constants";
 
 const ProductTab =({product})=>
 {
     const [amount, setAmount] = useState(0);
+    const dispatch = useDispatch();
 
     const amountInk =(e)=>
     {
@@ -13,6 +16,7 @@ const ProductTab =({product})=>
             value = amount;
         }
         setAmount(value);
+        dispatch({type: ADD_ORDER, payload: {prod: product, amount: value}})
     }
 
     return(
