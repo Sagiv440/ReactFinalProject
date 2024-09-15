@@ -3,6 +3,33 @@ import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UPDATE_ORDER } from "../../../../Utils/constants";
 
+const text = {
+    display: "flex",
+    margin: "5px",
+  }
+
+  const localCard = {
+    display: "flex",
+    margin: "5px",
+    width: '100%',
+    borderRadius: "15px",
+    backgroundColor: "#cecece",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+  }
+  const cardLeft = {
+    flex: "1",                 /* Take 2 parts of the available space */
+    display: "flex",
+    flexDirection: "column",   /* Vertical stacking (header, then list) */
+    padding: '15px',
+  }
+  const cardRight = {
+    flex: "2",                 /* Take 2 parts of the available space */
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: '15px',
+  }
+
 const ProductTab =({product})=>
 {
     const [amount, setAmount] = useState(0);
@@ -33,30 +60,26 @@ const ProductTab =({product})=>
     }
 
     return(
-        <dir class="card">
-            <div class="main-container">
-                <div class="right-container">
-                    <h1>{product.title}</h1>
-                    {product.description}<br/>
-                    Price:{product.price}<br/>
-                    In Stock:<br/>
+        <div style={localCard}>
+            <div style={cardLeft}>
+                <h1 style={text}>{product.title}</h1>
+                <p style={text}>{product.description}</p>
+                <p style={text}>Price: ${product.price}</p>
+                <p style={text}>In Stock:</p>
+                
+                <dir style={{display: "flex", flexDirection: "wrap", justifyContent: "center", padding: "0px" ,marginTop: "5px" }}>
+                    <Button variant="contained" size="small" onClick={(e=>amountInk(-1))}>-</Button>
+                    <h3 style={{display: "flex", margin: "3px",}}>{amount}</h3>
+                    <Button variant="contained" size="small" onClick={(e=>amountInk(1))}>+</Button>
                     
-                    <dir style={{display: "flex", flexDirection: "wrap", justifyContent: "space-between", gap: '10px'}}>
-                        <Button variant="contained" size="small" onClick={(e=>amountInk(-1))}>-</Button>
-                        <dir style={{display: 'flex', height: '100px', width: "100px", backgroundColor:"white"}}>
-                            <h3>{amount}</h3>
-                        </dir>
-                        <Button variant="contained" size="small" onClick={(e=>amountInk(1))}>+</Button>
-                        
-                    </dir>
-                </div>
-
-                <div class="right-container">
-                        imagePlaceHolder
-                        
-                </div>
+                </dir>
             </div>
-        </dir>
+
+            <div style={cardRight}>
+                <img style={{boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",borderRadius: "15px"}} src={product.imageLink} alt={product.title} width="200" height="200"/>
+                <p style={text}>Bought: {product.price}</p>
+            </div>
+        </div>
     )
 }
 export default ProductTab;
