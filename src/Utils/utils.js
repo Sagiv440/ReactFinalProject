@@ -16,3 +16,8 @@ export function getDate()
     // Format as a string: "MM-DD-YYYY"
     return `${month}.${day}.${year}`;
   }
+
+export function getById(products, pId)
+{
+    return(products.find((prod) => prod.id === pId))
+}

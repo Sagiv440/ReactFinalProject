@@ -1,6 +1,11 @@
 
-import { PieChart } from '@mui/x-charts';
-import { BarChart } from '@mui/x-charts/BarChart';
+import TotalSoldProducts from './StatisticTabs/TotalSold';
+import ProductQuantity from './StatisticTabs/ProductQuantity';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { getById } from '../../../Utils/utils';
+import { USER_TEMPLATE } from '../../../Utils/constants';
+
 
 const item = {
     margin: "5px",
@@ -14,46 +19,26 @@ const item = {
 
 const Statistics =()=>
     {
+        const users = useSelector((e)=>e.users_admin);
+        const [curUser, setCurUser] = useState(USER_TEMPLATE);
+
         return (
             <>
-            <h3 style={{display: "flex", marginBottom: "5px"}}>Total Sold Products</h3>
-            <PieChart
-                series={[
-                    {
-                    data: [
-                        { id: 0, value: 10, label: 'series A' },
-                        { id: 1, value: 15, label: 'series B' },
-                        { id: 2, value: 20, label: 'series C' },
-                    ],
-                    },
-                ]}
-                width={400}
-                height={200}
-                />
+                <TotalSoldProducts/>
                 <br/>
-            <h3 style={{display: "flex", marginBottom: "5px"}}>Product Quantity Par Customer</h3>
-            <dir style={{display: "flex", justifyContent: "flex-start", padding: "0px" ,marginTop: "5px"}}>
-                <p style={text}>Selected User:</p>
-                <select style={item}>
-                    <option>None</option>
-                </select>
-            </dir>
-            <BarChart
-                xAxis={[
-                    {
-                    id: 'barCategories',
-                    data: ['bar A', 'bar B', 'bar C'],
-                    scaleType: 'band',
-                    },
-                ]}
-                series={[
-                    {
-                    data: [2, 5, 3],
-                    },
-                ]}
-                width={500}
-                height={300}
-                />
+                <h3 style={{display: "flex", marginBottom: "5px"}}>Product Quantity Par Customer</h3>
+                <dir style={{display: "flex", justifyContent: "flex-start", padding: "0px" ,marginTop: "5px"}}>
+                    <p style={text}>Selected User:</p>
+                    <select style={item} onChange={(e)=>setCurUser(getById(users,e.target.value))}>
+                        <option hidden>None</option>
+                        {users.map((user)=>
+                        {
+                            return(<option value={user.id}>{user.username}</option>)
+                        }
+                        )}
+                    </select>
+                </dir>
+                <ProductQuantity user={curUser}/>
             </>
         )
     }

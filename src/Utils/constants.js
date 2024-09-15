@@ -61,3 +61,4 @@ export const LOAD_USERS = 'LOAD_USERS';
 export const CLEAR_DATABASE = 'CLEAR_DATABASE';
 export const UPDATE_ORDER = 'UPDATE_ORDER';
 export const PURCHES = 'PURCHES';
+export const ADMIN_SELECT = 'ADMIN_SELECT'
