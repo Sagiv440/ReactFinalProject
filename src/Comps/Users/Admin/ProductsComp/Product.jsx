@@ -49,11 +49,15 @@ const Product =({prod, save, remove})=>
     <div style={{display:'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
     <div class="left">
     Title: <input type="text" onChange={(e)=>setNProduct({ ...nProduct, title: e.target.value})} defaultValue={prod.title}/><br/>
-    Category:<select onChange={(e)=>setNProduct({ ...nProduct, category: e.target.value})}>
+    Category:<select defaultChecked onChange={(e)=>setNProduct({ ...nProduct, category: e.target.value})}>
                 {
                     categories.map((cat) =>
                     {
-                        return(<option key={cat.id} value={cat.name}>{cat.name}</option>)
+                        if(cat.name == prod.category){
+                            return(<option selected key={cat.id} value={cat.name}>{cat.name}</option>)
+                        }else{
+                            return(<option key={cat.id} value={cat.name}>{cat.name}</option>)
+                        }
                     }
                     )
                 }
@@ -61,7 +65,7 @@ const Product =({prod, save, remove})=>
     Discription: <input type="text" onChange={(e)=>setNProduct({ ...nProduct, description: e.target.value})} defaultValue={prod.description}/><br/>
     </div>
     <div class="left">
-    Price: <input type="number" onChange={(e)=>setNProduct({ ...nProduct, price: e.target.value})} defaultValue={prod.price}/><br/>
+    Price: <input type="number" onChange={(e)=>setNProduct({ ...nProduct, price: e.target.value})} defaultValue={parseInt(prod.price,10)}/><br/>
     Link to pic: <input type="text" onChange={(e)=>setNProduct({ ...nProduct, imageLink: e.target.value})} defaultValue={prod.imageLink}/><br/>
     <SmartTable table={table}/>
     <button onClick={()=>save(prod.id, nProduct)}>Save</button><br/>
