@@ -1,104 +1,123 @@
 export const TABLE_TEMP =
 {
-    config: "",
+    style: {},
     lines: [],
 }
 
 export const LINE_TEMP =
 {
-    config: "",
+    style: {},
     cell: [],
 }
 
 export const CELL_TEMP =
 {
+    style: {},
     content: {},
 }
 
 export const TEST_TABLE = 
 {
-    config: "",
+    style: {},
     lines: [
         {
-            config: "",
+            style: { fontSize: "18px", fontWeight: "bold"},
             cell: [
                 {
+                    style: {},
                     content: 0,
                 },
                 {
+                    style: {},
                     content: "text",
                 },
                 {
+                    style: {},
                     content: "Text",
                 },
             ],
         },
         {
-            config: "",
+            style: {},
             cell: [
                 {
+                    style: {},
                     content: 4,
                 },
                 {
+                    style: {},
                     content: 4,
                 },
                 {
+                    style: {},
                     content: "Text",
                 },
             ],
         },
         {
-            config: "",
+            style: {},
             cell: [
                 {
+                    style: {},
                     content: "Hello",
                 },
                 {
+                    style: {},
                     content: "Hello",
                 },
                 {
+                    style: {},
                     content: 
                     {
-                        config: "",
+                        style: {},
                         lines: [
                             {
-                                config: "",
+                                style: {},
                                 cell: [
                                     {
+                                        style: {},
                                         content: 0,
                                     },
                                     {
+                                        style: {},
                                         content: "text",
                                     },
                                     {
+                                        style: {},
                                         content: "Text",
                                     },
                                 ],
                             },
                             {
-                                config: "",
+                                style: {},
                                 cell: [
                                     {
+                                        style: {},
                                         content: 4,
                                     },
                                     {
+                                        style: {},
                                         content: 4,
                                     },
                                     {
+                                        style: {},
                                         content: "Text",
                                     },
                                 ],
                             },
                             {
-                                config: "",
+                                style: {},
                                 cell: [
                                     {
+                                        style: {},
                                         content: "Hello",
                                     },
                                     {
+                                        style: {},
                                         content: "Hello",
                                     },
                                     {
+                                        style: {},
                                         content: 45,
                                     },
                                 ],

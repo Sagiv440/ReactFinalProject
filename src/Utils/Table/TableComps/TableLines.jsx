@@ -1,11 +1,17 @@
+import { useMemo } from "react";
 import TableCell from "./TableCell";
 
 const TableLines =({line, id})=>
 {
+    
     return(<>
-            {line.cell.map((cell, id)=>
+            {line.cell.map((cl, id)=>
                     {
-                        return(<td key={id} style={{ border: '2px solid black'}}><TableCell cell={cell} id={id}/></td>)
+                        if(Object.keys(cl.style).length === 0 || cl.style == undefined){
+                            return(<td key={id}><TableCell cell={cl} id={id}/></td>)
+                        }else{
+                            return(<td key={id} style={cl.style}><TableCell cell={cl} id={id}/></td>)
+                        }
                     }
                 )
             }
