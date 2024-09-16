@@ -24,14 +24,18 @@ const UserProducts =()=>
 
         }),[search])
 
-
+        function transformBox() {
+            const box = document.getElementById('id');
+            box.classList.toggle('callaps');
+        }
 return (
 
     <div style={tabStyle}>
 
-        <div class="left-container">
+        <div id="id" class="left-container">
             <UserCart/>
         </div>
+        <button onClick={()=>transformBox()}>b</button>
         <div class="right-container">
             <div class="header">
             <SearchTap search={search} setSearch={setSearch} maxPrice={maxp}/>

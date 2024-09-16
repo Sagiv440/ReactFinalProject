@@ -73,9 +73,6 @@ const UserCart =()=>
             <h4>Total: ${tPrice}</h4>
             <button onClick={()=>purches()}>Purches</button>
         </div>
-        <div style={TackingButton}>
-            <button>A</button>
-        </div>
         </>
     )
 }

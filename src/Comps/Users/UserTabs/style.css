@@ -12,6 +12,15 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    transition: transform 0.5s;
+  }
+
+  .callaps  {
+      transform: translateX(-100%) scaleX(0%)
+  }
+
+  .toggle  {
+    transform: translateX(-100%)
   }
   
   .left-container ul {

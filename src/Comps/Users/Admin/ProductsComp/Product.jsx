@@ -29,6 +29,27 @@ const localCard = {
     display:"flex",
   }
 
+const tableStyle = {
+    backgroundColor: "black",
+    fontSize: "18px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+}
+
+const LineStyle = {
+    padding: "8px",
+    textAlign: 'left',
+}
+
+const cellStyle = {
+    padding: "2px",
+    backgroundColor: "#f1f1f1",
+}
+const cellTitleStyle = {
+    padding: "2px",
+    backgroundColor: "#c9c9c9",
+    fontWeight: "bold",
+}
+
 const Product =({prod, save, remove})=>
 {
     const [nProduct, setNProduct] = useState({...PRODUCT_TEMPLATE, 
@@ -46,9 +67,9 @@ const Product =({prod, save, remove})=>
     const getProducts =()=>
         {
             const titles = { ...LINE_TEMP, cell: [
-                { ...CELL_TEMP, content: "Product"},
-                { ...CELL_TEMP, content: "Qty"},
-                { ...CELL_TEMP, content: "Date"},
+                { ...CELL_TEMP, style: {...cellTitleStyle}, content: "Product"},
+                { ...CELL_TEMP, style: {...cellTitleStyle}, content: "Qty"},
+                { ...CELL_TEMP, style: {...cellTitleStyle}, content: "Date"},
             ]}
             let userDisplay = [];
             for(let i = 0; i < users.length; i++)
@@ -56,13 +77,13 @@ const Product =({prod, save, remove})=>
                 const order = users[i].orders.find((obj) => obj.productId === prod.id);
                 if(order != null){
                     userDisplay = [...userDisplay, { ...LINE_TEMP, cell: [
-                        { ...CELL_TEMP, content: `${users[i].name.first}`},
-                        { ...CELL_TEMP, content: `${order.amount}`},
-                        { ...CELL_TEMP, content: `${order.date}`},
+                        { ...CELL_TEMP, style: {...cellStyle}, content: `${users[i].name.first}`},
+                        { ...CELL_TEMP, style: {...cellStyle}, content: `${order.amount}`},
+                        { ...CELL_TEMP, style: {...cellStyle}, content: `${order.date}`},
                     ]}]
                 }
             }
-            return{ ...TABLE_TEMP, lines: [titles, ...userDisplay]}
+            return{ ...TABLE_TEMP, style: {...tableStyle}, lines: [titles, ...userDisplay]}
         }
     useEffect(()=>{
         let tb = getProducts();
