@@ -55,6 +55,11 @@ body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-shadow: 2px 2px 5px #919191;
   }
+
+  h2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 2px 2px 5px #919191;
+  }
   a{
     font-size: 18px;
     font-weight: bold;

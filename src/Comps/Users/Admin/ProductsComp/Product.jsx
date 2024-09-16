@@ -3,7 +3,31 @@ import { useSelector } from "react-redux"
 import { PRODUCT_TEMPLATE } from "../../../../Utils/constants";
 import SmartTable from "../../../../Utils/Table/SmartTable";
 import { TABLE_TEMP, LINE_TEMP, CELL_TEMP } from "../../../../Utils/Table/TableConst";
+import { Button } from "@mui/material";
 
+const localCard = {
+    display: "flex",
+    flexDirection: "column",
+    margin: "15px",
+    padding: "10px",
+    width: '100%',
+    borderRadius: "15px",
+    backgroundColor: "#cecece",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+  }
+
+  const left = {
+    display: "flex",
+    flexDirection: "column",
+    top: "50%",
+    width: "100%",
+    textAlign: "left",
+    fontSize: "18px",
+  }
+  const text = {
+    margin: "5px",
+    display:"flex",
+  }
 
 const Product =({prod, save, remove})=>
 {
@@ -46,30 +70,33 @@ const Product =({prod, save, remove})=>
     },[users, categories])
 
     return (
-    <div style={{display:'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
-    <div class="left">
-    Title: <input type="text" onChange={(e)=>setNProduct({ ...nProduct, title: e.target.value})} defaultValue={prod.title}/><br/>
-    Category:<select defaultChecked onChange={(e)=>setNProduct({ ...nProduct, category: e.target.value})}>
-                {
-                    categories.map((cat) =>
-                    {
-                        if(cat.name == prod.category){
-                            return(<option selected key={cat.id} value={cat.name}>{cat.name}</option>)
-                        }else{
-                            return(<option key={cat.id} value={cat.name}>{cat.name}</option>)
-                        }
-                    }
-                    )
-                }
-            </select><br/>
-    Discription: <input type="text" onChange={(e)=>setNProduct({ ...nProduct, description: e.target.value})} defaultValue={prod.description}/><br/>
-    </div>
-    <div class="left">
-    Price: <input type="number" onChange={(e)=>setNProduct({ ...nProduct, price: e.target.value})} defaultValue={parseInt(prod.price,10)}/><br/>
-    Link to pic: <input type="text" onChange={(e)=>setNProduct({ ...nProduct, imageLink: e.target.value})} defaultValue={prod.imageLink}/><br/>
-    <SmartTable table={table}/>
-    <button onClick={()=>save(prod.id, nProduct)}>Save</button><br/>
-    </div>
+    <div style={localCard}>
+        <div style={{display: "flex"}}>
+            <div style={left}>
+                <p style={text}>Title: <input type="text" onChange={(e)=>setNProduct({ ...nProduct, title: e.target.value})} defaultValue={prod.title}/></p>
+                <p style={text}>Category:<select defaultChecked onChange={(e)=>setNProduct({ ...nProduct, category: e.target.value})}>
+                            {
+                                categories.map((cat) =>
+                                {
+                                    if(cat.name == prod.category){
+                                        return(<option selected key={cat.id} value={cat.name}>{cat.name}</option>)
+                                    }else{
+                                        return(<option key={cat.id} value={cat.name}>{cat.name}</option>)
+                                    }
+                                }
+                                )
+                            }
+                        </select></p>
+                        <p style={text}>Discription:</p> <p style={text}><textarea rows="5" cols="35" onChange={(e)=>setNProduct({ ...nProduct, description: e.target.value})} defaultValue={prod.description}/></p>
+            </div>
+            <div style={left}>
+                <p style={text}>Price: <input type="number" onChange={(e)=>setNProduct({ ...nProduct, price: e.target.value})} defaultValue={parseInt(prod.price,10)}/></p>
+                <p style={text}>Link to pic: <input type="text" onChange={(e)=>setNProduct({ ...nProduct, imageLink: e.target.value})} defaultValue={prod.imageLink}/></p>
+                <p style={text}><SmartTable table={table}/></p>
+            
+            </div>
+        </div>
+        <Button variant="contained" onClick={()=>save(prod.id, nProduct)}>Save</Button>
     </div>
     )
 }
