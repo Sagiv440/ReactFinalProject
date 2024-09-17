@@ -7,7 +7,14 @@ import { SEARCH_TEMP } from "../../../Utils/constants";
 
 const tabStyle = {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "center",    
+
+  }
+  const buttonStyle = { 
+    color: "black",
+    borderRadius: "15px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+    backgroundColor: "#f0f0f0",
   }
 
 const UserProducts =()=>
@@ -35,7 +42,7 @@ return (
         <div id="id" class="left-container">
             <UserCart/>
         </div>
-        <button onClick={()=>transformBox()}>b</button>
+        <button style={buttonStyle} onClick={()=>transformBox()}>b</button>
         <div class="right-container">
             <div class="header">
             <SearchTap search={search} setSearch={setSearch} maxPrice={maxp}/>

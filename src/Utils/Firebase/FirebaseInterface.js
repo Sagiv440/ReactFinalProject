@@ -79,3 +79,14 @@ export async function getCollection(coll)
     return ([...adminData]);
 }
 
+export async function getPublicUsersOrders(collectionName)
+{
+    const admin = collection(db, collectionName);
+    const q = query(admin, where("viewOrders", "==", true))
+    const adminRef = await getDocs(q);
+    const adminData = adminRef.docs.map(doc => ({
+        ...doc.data()
+    }));
+    return adminData;
+}
+

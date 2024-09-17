@@ -40,6 +40,13 @@ export const SEARCH_TEMP =
     price: 0,
 }
 
+export const SEARCH_QUERY = 
+{
+    field: "",
+    operator: "", /*<, <=, ==, >, >=, != */
+    value: "",
+}
+
 //Firebase collection names
 export const USERS_COLLECTION = "Users";
 export const ADMIN_COLLECTION = "Admin";
@@ -62,3 +69,4 @@ export const CLEAR_DATABASE = 'CLEAR_DATABASE';
 export const UPDATE_ORDER = 'UPDATE_ORDER';
 export const PURCHES = 'PURCHES';
 export const ADMIN_SELECT = 'ADMIN_SELECT'
+export const GET_PUBLIC_ORDERS = 'GET_PUBLIC_ORDERS'

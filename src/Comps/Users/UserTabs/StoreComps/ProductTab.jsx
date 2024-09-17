@@ -30,7 +30,7 @@ const text = {
     padding: '15px',
   }
 
-const ProductTab =({product})=>
+const ProductTab =({product, bought})=>
 {
     const [amount, setAmount] = useState(0);
     const cart = useSelector((e)=>e.cart);
@@ -77,7 +77,7 @@ const ProductTab =({product})=>
 
             <div style={cardRight}>
                 <img style={{boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",borderRadius: "15px"}} src={product.imageLink} alt={product.title} width="200" height="200"/>
-                <p style={text}>Bought: {product.price}</p>
+                <p style={text}>Bought: {bought}</p>
             </div>
         </div>
     )

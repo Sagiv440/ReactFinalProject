@@ -1,4 +1,4 @@
-import { UPDATE_ORDER, CLEAR_DATABASE, INIT_USER, LOAD_PRODUCTS, LOAD_USERS, PURCHES, ADMIN_SELECT } from "../constants"
+import { UPDATE_ORDER, CLEAR_DATABASE, INIT_USER, LOAD_PRODUCTS, LOAD_USERS, PURCHES, ADMIN_SELECT, GET_PUBLIC_ORDERS } from "../constants"
 import { ORDER_TEMPLATE, LOAD_CATEGORIES } from "../constants";
 const REDUCER_STATE = 
 {
@@ -9,6 +9,7 @@ const REDUCER_STATE =
 
     //User_Local_Vers
     cart: [],
+    public_orders: [],
 
     //Admin_Access_Only
     users_admin: [],
@@ -73,6 +74,10 @@ const storeReducer = (state = REDUCER_STATE, action) =>
         case ADMIN_SELECT:
             {
                 return { ...state, selected_user_admin: {...action.payload}};
+            }
+        case GET_PUBLIC_ORDERS:
+            {
+                return { ...state, public_orders: [...action.payload]};
             }
 
         default:

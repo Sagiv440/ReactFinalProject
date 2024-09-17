@@ -11,8 +11,8 @@ import Categories from "./Admin/Categories";
 import Customers from "./Admin/Customers";
 import AdminProducts from "./Admin/AdminProducts";
 import Statistics from "./Admin/Statistics";
-import { CATEGORY_COLLECTION, CLEAR_DATABASE, LOAD_CATEGORIES, LOAD_PRODUCTS, LOAD_USERS, PRODUCT_COLLECTION, USERS_COLLECTION } from "../../Utils/constants";
-import { getCollection } from "../../Utils/Firebase/FirebaseInterface";
+import { CATEGORY_COLLECTION, CLEAR_DATABASE, GET_PUBLIC_ORDERS, LOAD_CATEGORIES, LOAD_PRODUCTS, LOAD_USERS, PRODUCT_COLLECTION, USERS_COLLECTION } from "../../Utils/constants";
+import { getCollection, getPublicUsersOrders } from "../../Utils/Firebase/FirebaseInterface";
 import { Button } from "@mui/material";
 
 const UserComp =()=>
@@ -48,6 +48,17 @@ const UserComp =()=>
                 let a_users = await getCollection(USERS_COLLECTION);
                 dispatch({type: LOAD_USERS, payload: a_users})
             }
+
+            if(type.type == "User")
+                {
+                    let orders = []
+                    let a_users = await getPublicUsersOrders(USERS_COLLECTION)
+                    for(let i = 0; i < a_users.length ; i++)
+                    {
+                        orders = [ ...orders, ...a_users[i].orders];
+                    }
+                    dispatch({type: GET_PUBLIC_ORDERS, payload: [ ...orders]})
+                }
         }
 
         if(Object.entries(user).length === 0){

@@ -44,7 +44,7 @@ const SearchTap =({search, setSearch, maxPrice})=>
             <input type="range" max={parseInt(maxPrice,10)} style={item} defaultValue={search.price} onChange={(e)=>setSearch({ ...search, price: e.target.value})}></input>    
             <p style={text}>Title:</p>
             <input type="text" style={item} defaultValue={search.title} onChange={(e)=>setSearch({ ...search, title: e.target.value})}></input> <br/>
-            <Button variant="contained" onClick={()=>setSearch({...search, title: "", category: "", price: 0})} >Clear</Button>  
+            <Button variant="contained" onClick={()=>setSearch({...search, title: "", category: "", price: maxPrice})} >Clear</Button>  
         </div>
     )
 }
