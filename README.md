@@ -9,14 +9,14 @@ Thin project is deigned to show skils and knolage in react an front end developm
 2. Redux - The single source of truth that holds the state of the entire application.
 3. Ui Material - for adding styized props and graphs.
 
-# Main scene:
-  <img src="https://github.com/Sagiv440/ReactMidProject/blob/master/media/UserMenu_Explaned.PNG?raw=true"/><br/>
+# Store scene:
+  <img src="https://github.com/Sagiv440/ReactFinalProject/blob/master/Images/E-Commers%20Store.PNG?raw=true"/><br/>
   
-<h4>Search:</h4> 
-  <img src="https://github.com/Sagiv440/ReactMidProject/blob/master/media/Search%20User.PNG?raw=true"/><br/>
+<h4>Order Log:</h4> 
+  <img src="https://github.com/Sagiv440/ReactFinalProject/blob/master/Images/OrderLog.PNG?raw=true"/><br/>
   
-<h4>Other Data:</h4> 
-  <img src="https://github.com/Sagiv440/ReactMidProject/blob/master/media/ExtraData.PNG?raw=true"/><br/>
+<h4>Admin Product List:</h4> 
+  <img src="https://github.com/Sagiv440/ReactFinalProject/blob/master/Images/AdminProduct.PNG?raw=true"/><br/>
   
-<h4>Todos and Posts:</h4> 
-  <img src="https://github.com/Sagiv440/ReactMidProject/blob/master/media/ShowTodo_Posts.PNG?raw=true"/><br/>
+<h4>Admin Store Statistics:</h4> 
+  <img src="https://github.com/Sagiv440/ReactFinalProject/blob/master/Images/AdminStatistics.PNG?raw=true"/><br/>
