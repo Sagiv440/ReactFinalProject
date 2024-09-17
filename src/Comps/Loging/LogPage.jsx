@@ -34,7 +34,7 @@ const LogPage = ()=>
                     navigate(`User/${username}`);
                 }
             else{
-                console.log("Wrong Username Or Password!")
+                alert("Incorrect username or password!")
             }
         }
     }
