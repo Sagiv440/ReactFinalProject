@@ -2,7 +2,8 @@ E-Commerce (React Final Project)
 =====
 
 A E-Commerce Store Template made in vite React.<br/> 
-Thin project is deigned to show skils and knolage in react an front end development.
+Thin project is deigned to show skils and knolage in react an front end development.<br/>
+linke to working example: [here](https://sagiv440.github.io/ReactFinalProject/)
 
 # Libraries And Hooks Used 
 1. Firebase - A NoSQL cloud database that stores and syncs data between users in real-time.
