@@ -13,10 +13,10 @@ function App() {
   return (
     <>
     <Routes>
-      <Route path="/" element={<LogPage/>}></Route>
-      <Route path="/Registration" element={<RegistrationPage/>}></Route>
-      <Route path="/:type/:name" element={<UserComp/>}></Route>
-      <Route path="/TableTest" element={<TableTest/>}></Route>
+      <Route path="/ReactFinalProject/" element={<LogPage/>}></Route>
+      <Route path="/ReactFinalProject/Registration" element={<RegistrationPage/>}></Route>
+      <Route path="/ReactFinalProject/:type/:name" element={<UserComp/>}></Route>
+      <Route path="/ReactFinalProject/TableTest" element={<TableTest/>}></Route>
      
     </Routes>
     </>

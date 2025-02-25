@@ -1,8 +1,7 @@
 {
   "name": "reactfinalproject",
-  "private": true,
-  "homepage": "https://sagiv440.github.io/ReactFinalProject/",
-  "version": "0.0.0",
+  "homepage": "https://sagiv440.github.io/ReactFinalProject",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

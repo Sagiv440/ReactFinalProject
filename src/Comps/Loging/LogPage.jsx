@@ -24,14 +24,14 @@ const LogPage = ()=>
         if( admin != null)
             {
                 dispatch({type: INIT_USER, payload: { ...admin }});
-                navigate(`Admin/${username}`);
+                navigate(`ReactFinalProject/Admin/${username}`);
             }
         else {
             admin = await LogUser(USERS_COLLECTION, username, password)
             if(admin != null)
                 {
                     dispatch({type: INIT_USER, payload: { ...admin }});
-                    navigate(`User/${username}`);
+                    navigate(`ReactFinalProject/User/${username}`);
                 }
             else{
                 console.log("Wrong Username Or Password!")
@@ -49,7 +49,7 @@ const LogPage = ()=>
 
                 <Button variant="contained"  onClick={()=> loginFunc()}>Login</Button><br/><br/>
 
-                New User? <a href="Registration">Register</a>
+                New User? <a href="ReactFinalProject/Registration">Register</a>
             </div>
        </div>
         </>
